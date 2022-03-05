@@ -28,7 +28,14 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
+      // examine the response from the server request :
+      data = data.map(obj => {
+        var newObj = { ...obj };
+        for (key in obj) {
+          newObj[key] = filterXSS(obj[key]);
+        }
+        return newObj;
+      });
       Rooms.updateRooms(data);
       Messages.update(data);
       // console.log(data);

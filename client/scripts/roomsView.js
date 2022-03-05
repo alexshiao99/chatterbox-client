@@ -32,9 +32,7 @@ var RoomsView = {
   handleClick: function(event) {
     // TODO: Handle the user clicking the "Add Room" button.
     let newRoomName = prompt('Enter New Room Name');
-    if (Rooms._data.has(newRoomName)) {
-      alert('Room already exists!');
-    } else {
+    if (!Rooms._data.has(newRoomName)) {
       Rooms.addRoom(newRoomName);
     }
   }

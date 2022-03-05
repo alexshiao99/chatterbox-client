@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="client/styles/styles.css">
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
+    <script src="node_modules/xss/dist/xss.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Rosario:wght@300;500&display=swap" rel="stylesheet">
     <script>
       // DO NOT MODIFY THIS CODE
       if (!/(&|\?)username=/.test(window.location.search)) {
@@ -23,16 +27,23 @@
   </head>
   <body>
     <div id="main">
-      <h1>chatterbox</h1>
+      <img src="./client/images/boxes.jpg" class="logo" />
+      <h1>Chatterbox</h1>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
         <select></select>
-        <button>Add Room</button>
+        <button class="submit">
+          <span>Add Room</span>
+          <div class="liquid"></div>
+        </button>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
-        <input type="submit" name="submit" class="submit"/>
+        <button type="submit" name="submit" class="submit">
+          <span>Submit</span>
+          <div class="liquid"></div>
+        </button>
       </form>
     </div>
     <div id="chats"></div>

@@ -7,9 +7,9 @@ var MessageView = {
   // TODO: Update this template accordingly.
   render: _.template(`
       <div class="chat">
-        <div class="username <%= Friends.check(github_handle) ? 'friend' : 'not-friend' %>"><%= github_handle %></div>
-        <div class="timestamp"><%= created_at %></div>
-        <div class="text"><%= text %></div>
+        <div class="username"><%= username %></div>
+        <div class="timestamp"></div>
+        <div class="text <%= Friends.check(username) ? 'friend' : 'not-friend' %>"><%= text %></div>
       </div>
     `)
 
