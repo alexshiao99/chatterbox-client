@@ -7,24 +7,36 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    // TODO: Perform any work which needs to be done
-    // when this view loads.
+    RoomsView.$button.on('click', RoomsView.handleClick);
+    RoomsView.$select.on('change', RoomsView.handleChange);
   },
 
   render: function() {
     // TODO: Render out the list of rooms.
+    RoomsView.$select.empty();
+    Rooms._data.forEach(roomName => RoomsView.renderRoom(roomName));
+    RoomsView.$select.val(Rooms.currentRoom);
   },
 
-  renderRoom: function(roomname) {
+  renderRoom: function(roomName) {
     // TODO: Render out a single room.
+    let $option = $('<option>').val(roomName).text(roomName);
+    RoomsView.$select.append($option);
   },
 
   handleChange: function(event) {
     // TODO: Handle a user selecting a different room.
+    Rooms.changeRooms(event.target.value);
   },
 
   handleClick: function(event) {
     // TODO: Handle the user clicking the "Add Room" button.
+    let newRoomName = prompt('Enter New Room Name');
+    if (Rooms._data.has(newRoomName)) {
+      alert('Room already exists!');
+    } else {
+      Rooms.addRoom(newRoomName);
+    }
   }
 
 };

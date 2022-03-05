@@ -8,6 +8,8 @@ var App = {
 
   username: 'anonymous',
 
+  _fetchInterval: 5000,
+
   initialize: function() {
     App.username = window.location.search.substr(10);
 
@@ -21,15 +23,19 @@ var App = {
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
+    setInterval(App.fetch, App._fetchInterval);
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      Rooms.updateRooms(data);
+      Messages.update(data);
+      // console.log(data);
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
+      callback();
     });
   },
 
